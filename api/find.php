@@ -8,9 +8,10 @@ if ($query == null) {
 $servername = "localhost";
 $username = "root";
 $password = "12345678@X";
+$dbname = "finder";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
@@ -21,9 +22,11 @@ $sql = "SELECT f.*, s.address FROM files f LEFT JOIN sources s ON f.source_id = 
 $result = $conn->query($sql);
 
 $data = array();
+//echo $result->num_rows;
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
+    	//echo $row;
     	$data[] = array(
     		'id' => $row["id"],
     		'path' => $row["path"],
