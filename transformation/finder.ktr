@@ -133,12 +133,13 @@
   <hop> <from>Split field to rows</from><to>Add constants</to><enabled>Y</enabled> </hop>
   <hop> <from>Add constants</from><to>Get System Info</to><enabled>Y</enabled> </hop>
   <hop> <from>Get System Info</from><to>Table output</to><enabled>Y</enabled> </hop>
+  <hop> <from>Execute a process</from><to>Write to log 2</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Execute a process</name>
     <type>ExecProcess</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -190,7 +191,7 @@
         <currency/>
         <decimal/>
         <group/>
-        <nullif>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; ipconfig</nullif>
+        <nullif>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x27;ipconfig &#x2f;all&#x27;</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -500,6 +501,38 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1000</xloc>
       <yloc>100</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Write to log 2</name>
+    <type>WriteToLog</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <loglevel>log_level_basic</loglevel>
+      <displayHeader>Y</displayHeader>
+      <limitRows>N</limitRows>
+      <limitRowsNumber>0</limitRowsNumber>
+      <logmessage/>
+    <fields>
+      <field>
+        <name>exit_value</name>
+        </field>
+      <field>
+        <name>error</name>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>592</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
