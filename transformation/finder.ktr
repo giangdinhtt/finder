@@ -191,7 +191,7 @@
         <currency/>
         <decimal/>
         <group/>
-        <nullif>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x27;ipconfig &#x2f;all&#x27;</nullif>
+        <nullif>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x22;ipconfig &#x5c;&#x2f;all&#x22;</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
