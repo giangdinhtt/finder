@@ -132,7 +132,7 @@
   <hop> <from>Replace target folder</from><to>Write to log</to><enabled>Y</enabled> </hop>
   <hop> <from>Split field to rows</from><to>Add constants</to><enabled>Y</enabled> </hop>
   <hop> <from>Add constants</from><to>Get System Info</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get System Info</from><to>Table output</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get System Info</from><to>Table output</to><enabled>N</enabled> </hop>
   <hop> <from>Execute a process</from><to>Write to log 2</to><enabled>Y</enabled> </hop>
   </order>
   <step>
@@ -179,7 +179,7 @@
         <currency/>
         <decimal/>
         <group/>
-        <nullif>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x5c;&#x22;cmd &#x2f;U &#x2f;C dir &#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d &#x2f;o&#x3a;gn&#x5c;&#x22;</nullif>
+        <nullif>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;U &#x2f;C dir &#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d &#x2f;o&#x3a;gn&#x22;</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -191,7 +191,19 @@
         <currency/>
         <decimal/>
         <group/>
-        <nullif>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x22;&#x22;&#x22;&#x22;ipconfig al&#x22;&#x22;&#x22;&#x22;</nullif>
+        <nullif>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x22;ipconfig &#x2f;&#x2f;all&#x22;</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>dummy2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x22;ipconfig&#x22;</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -204,8 +216,8 @@
     <last_time_field>FiveSecondsAgo</last_time_field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>200</xloc>
-      <yloc>100</yloc>
+      <xloc>192</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -527,6 +539,9 @@
         </field>
       <field>
         <name>error</name>
+        </field>
+      <field>
+        <name>output</name>
         </field>
       </fields>
      <cluster_schema/>
