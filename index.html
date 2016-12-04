@@ -279,26 +279,30 @@
 					}).done(function (response, textStatus, jqXHR){
 				        // Log a message to the console
 				        console.log(response);
-				        console.log("Hooray, it worked!");
+				        message = $('.message-list');
+				        setTimeout(function() {
+							message.innerHTML = '';
+							for (var i = 0; i < response.length; i ++) {
+								var file = response[i];
+								var path = file['path'];
+								var sourceSystem = file['source'];
+								var modifiedTime = file['lastModifedTime'];
+								var template = "<div class='message-item message-unread'><span class='sender' title='" + path + "'>" + sourceSystem + "</span><span class='time'>" + modifiedTime + "</span><span class='summary'><span class='text'>" + path + "</span></span></div>";
+								message.append(template);
+							}
+							$('.message-container').find('.message-loading-overlay').remove();
+							$('.message-footer .search-result').text(response.length + ' files total');
+						}, 300 + parseInt(Math.random() * 300));
 				    }).fail(function (jqXHR, textStatus, errorThrown){
 				        // Log the error to the console
 				        console.error(
 				            "The following error occurred: "+
 				            textStatus, errorThrown
 				        );
+				        message = $('.message-list');
+				        message.innerHTML = '';
+				        $('.message-footer .search-result').text(textStatus);
 				    });
-					setTimeout(function() {
-						message.innerHTML = '';
-						var path = 'Click to open this message';
-						var sourceSystem = 'Alex John Red Smith';
-						var modifiedTime = '1:33 pm';
-						var template = "<div class='message-item message-unread'><span class='sender' title='" + path + "'>" + sourceSystem + "</span><span class='time'>" + modifiedTime + "</span><span class='summary'><span class='text'>" + path + "</span></span></div>";
-						for (var i = 0; i < 10; i ++) {
-message.append(template);
-						}
-						$('.message-container').find('.message-loading-overlay').remove();
-						$('.message-footer .search-result').text('151 files total');
-					}, 300 + parseInt(Math.random() * 300));
 				});
 			});
 		</script>
