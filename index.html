@@ -126,16 +126,7 @@
 															<!-- #section:pages/inbox.message-list -->
 															<div class="message-list" id="message-list">
 																<!-- #section:pages/inbox.message-list.item -->
-																<div class="message-item message-unread">
-																	<span class="sender" title="Alex John Red Smith">Alex John Red Smith </span>
-																	<span class="time">1:33 pm</span>
-
-																	<span class="summary">
-																		<span class="text">
-																			Click to open this message
-																		</span>
-																	</span>
-																</div>
+																
 																<!-- /section:pages/inbox.message-list.item -->
 															</div>
 															<!-- /section:pages/inbox.message-list -->
@@ -272,6 +263,7 @@
 					var query = $('input.search-query');
 					var message = $('.message-list');
 					$('.message-container').append('<div class="message-loading-overlay"><i class="fa-spin ace-icon fa fa-spinner orange2 bigger-160"></i></div>');
+					message.empty();
 					$.ajax({
 						url: window.location.origin + '/finder/api/find.php',
 						type: 'post',
@@ -281,13 +273,12 @@
 				        console.log(response);
 				        message = $('.message-list');
 				        setTimeout(function() {
-							message.innerHTML = '';
 							for (var i = 0; i < response.length; i ++) {
 								var file = response[i];
 								var path = file['path'];
 								var sourceSystem = file['source'];
 								var modifiedTime = file['lastModifedTime'];
-								var template = "<div class='message-item message-unread'><span class='sender' title='" + path + "'>" + sourceSystem + "</span><span class='time'>" + modifiedTime + "</span><span class='summary'><span class='text'>" + path + "</span></span></div>";
+								var template = "<div class='message-item message-unread'><span class='sender' title='" + path + "'>" + sourceSystem + "</span><span class='time' style='width:130px;'>" + modifiedTime + "</span><span class='summary'><span class='text'>" + path + "</span></span></div>";
 								message.append(template);
 							}
 							$('.message-container').find('.message-loading-overlay').remove();
@@ -299,8 +290,7 @@
 				            "The following error occurred: "+
 				            textStatus, errorThrown
 				        );
-				        message = $('.message-list');
-				        message.innerHTML = '';
+				        $('.message-container').find('.message-loading-overlay').remove();
 				        $('.message-footer .search-result').text(textStatus);
 				    });
 				});
