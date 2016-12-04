@@ -179,7 +179,7 @@
         <currency/>
         <decimal/>
         <group/>
-        <nullif>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;U &#x2f;C dir &#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d &#x2f;o&#x3a;gn&#x22;</nullif>
+        <nullif>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x5c;&#x22;cmd &#x2f;U &#x2f;C dir &#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d &#x2f;o&#x3a;gn&#x5c;&#x22;</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -255,7 +255,7 @@
            </partitioning>
     <fields>
       <field>
-        <in_stream_name>dummy</in_stream_name>
+        <in_stream_name>template</in_stream_name>
         <out_stream_name>script_p1</out_stream_name>
         <use_regex>no</use_regex>
         <replace_string>&#x7b;target_machine&#x7d;</replace_string>
