@@ -129,7 +129,7 @@
   <hop> <from>Replace username</from><to>Replace password</to><enabled>Y</enabled> </hop>
   <hop> <from>Replace password</from><to>Replace target folder</to><enabled>Y</enabled> </hop>
   <hop> <from>Replace target folder</from><to>Execute a process</to><enabled>Y</enabled> </hop>
-  <hop> <from>Replace target folder</from><to>Write to log</to><enabled>N</enabled> </hop>
+  <hop> <from>Replace target folder</from><to>Write to log</to><enabled>Y</enabled> </hop>
   <hop> <from>Split field to rows</from><to>Add constants</to><enabled>Y</enabled> </hop>
   <hop> <from>Add constants</from><to>Get System Info</to><enabled>Y</enabled> </hop>
   <hop> <from>Get System Info</from><to>Table output</to><enabled>Y</enabled> </hop>
@@ -265,7 +265,7 @@
     <name>Replace target folder</name>
     <type>ReplaceString</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
