@@ -260,14 +260,14 @@
 				//basic initializations
 				$('.message-list .message-item input[type=checkbox]').removeAttr('checked');
 				$(document).on('click', '#searchBtn' , function() {
-					var query = $('input.search-query');
+					var query = $('input.search-query').value;
 					var message = $('.message-list');
 					$('.message-container').append('<div class="message-loading-overlay"><i class="fa-spin ace-icon fa fa-spinner orange2 bigger-160"></i></div>');
 					message.empty();
 					$.ajax({
 						url: window.location.origin + '/finder/api/find.php',
 						type: 'post',
-						data: {q:'query'}
+						data: {q:query}
 					}).done(function (response, textStatus, jqXHR){
 				        // Log a message to the console
 				        console.log(response);

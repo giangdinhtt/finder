@@ -18,7 +18,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT f.*, s.address FROM files f LEFT JOIN sources s ON f.source_id = s.id;";
+$sql = "SELECT f.*, s.address FROM files f LEFT JOIN sources s ON f.source_id = s.id WHERE f.path LIKE '%".$query."%';";
 $result = $conn->query($sql);
 
 $data = array();
