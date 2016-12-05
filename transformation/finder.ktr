@@ -11,7 +11,7 @@
     <parameters>
         <parameter>
             <name>file_input</name>
-            <default_value>&#x2f;tmp&#x2f;files.txt</default_value>
+            <default_value>&#x2f;Users&#x2f;giang.dinh&#x2f;Downloads&#x2f;files.txt</default_value>
             <description/>
         </parameter>
         <parameter>
@@ -102,7 +102,7 @@
   </notepads>
   <connection>
     <name>Finder DB</name>
-    <server>192.168.1.3</server>
+    <server>giang.xyz</server>
     <type>MYSQL</type>
     <access>Native</access>
     <database>finder</database>
@@ -128,20 +128,15 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Execute a process</from><to>Split field to rows</to><enabled>N</enabled> </hop>
-  <hop> <from>Generate Rows</from><to>Replace target</to><enabled>N</enabled> </hop>
-  <hop> <from>Replace target</from><to>Replace username</to><enabled>N</enabled> </hop>
-  <hop> <from>Replace username</from><to>Replace password</to><enabled>N</enabled> </hop>
-  <hop> <from>Replace password</from><to>Replace target folder</to><enabled>N</enabled> </hop>
-  <hop> <from>Replace target folder</from><to>Execute a process</to><enabled>N</enabled> </hop>
-  <hop> <from>Replace target folder</from><to>Write to log</to><enabled>N</enabled> </hop>
-  <hop> <from>Split field to rows</from><to>Add constants</to><enabled>N</enabled> </hop>
   <hop> <from>Add constants</from><to>Get System Info</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get System Info</from><to>Table output</to><enabled>N</enabled> </hop>
-  <hop> <from>CSV file input</from><to>Add constants</to><enabled>Y</enabled> </hop>
-  <hop> <from>CSV file input</from><to>Write to log 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Change file encoding</from><to>CSV file input</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get Variables</from><to>Change file encoding</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get System Info</from><to>Table output</to><enabled>Y</enabled> </hop>
+  <hop> <from>CSV file input</from><to>Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows</from><to>PASS</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows</from><to>FAILED</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values</from><to>Modified Java Script Value</to><enabled>Y</enabled> </hop>
+  <hop> <from>Modified Java Script Value</from><to>Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows</from><to>Add constants</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get Variables</from><to>CSV file input</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add constants</name>
@@ -170,8 +165,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>800</xloc>
-      <yloc>100</yloc>
+      <xloc>912</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -180,14 +175,14 @@
     <name>CSV file input</name>
     <type>CsvInput</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>&#x2f;Users&#x2f;giang.dinh&#x2f;Downloads&#x2f;filesutf8.txt</filename>
+    <filename>&#x2f;Users&#x2f;giang.dinh&#x2f;Downloads&#x2f;files.txt</filename>
     <filename_field>file_input</filename_field>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -195,14 +190,14 @@
     <enclosure>&#x22;</enclosure>
     <header>N</header>
     <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
+    <lazy_conversion>Y</lazy_conversion>
     <add_filename_result>N</add_filename_result>
     <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding>UTF-8</encoding>
+    <newline_possible>Y</newline_possible>
+    <encoding>UTF-16</encoding>
     <fields>
       <field>
-        <name>file</name>
+        <name>field</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -215,40 +210,15 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>432</xloc>
-      <yloc>160</yloc>
+      <xloc>352</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Execute a process</name>
-    <type>ExecProcess</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <processfield>script</processfield>
-    <resultfieldname>output</resultfieldname>
-    <errorfieldname>error</errorfieldname>
-    <exitvaluefieldname>exit_value</exitvaluefieldname>
-    <failwhennotsuccess>N</failwhennotsuccess>
-    <outputlinedelimiter>&#x24;&#x5b;0D,0A&#x5d;</outputlinedelimiter>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>100</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Generate Rows</name>
-    <type>RowGenerator</type>
+    <name>FAILED</name>
+    <type>WriteToLog</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -257,53 +227,46 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
+      <loglevel>log_level_basic</loglevel>
+      <displayHeader>Y</displayHeader>
+      <limitRows>N</limitRows>
+      <limitRowsNumber>0</limitRowsNumber>
+      <logmessage/>
     <fields>
-      <field>
-        <name>template</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;U &#x2f;C dir &#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d &#x2f;o&#x3a;gn&#x22;</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>dummy</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x22;ipconfig &#x2f;&#x2f;all&#x22;</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>dummy2</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>winexe -U &#x7b;username&#x7d;&#x25;&#x7b;password&#x7d; &#x2f;&#x2f;&#x7b;target_machine&#x7d; &#x22;ipconfig&#x22;</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <limit>1</limit>
-    <never_ending>N</never_ending>
-    <interval_in_ms>5000</interval_in_ms>
-    <row_time_field>now</row_time_field>
-    <last_time_field>FiveSecondsAgo</last_time_field>
+      </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>192</xloc>
-      <yloc>96</yloc>
+      <xloc>704</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Add constants</send_true_to>
+<send_false_to>FAILED</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>isEmpty</leftvalue>
+ <function>&#x3d;</function>
+ <rightvalue/>
+ <value><name>constant</name><type>Boolean</type><text>N</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>784</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -327,111 +290,15 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1000</xloc>
-      <yloc>100</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Replace password</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>script_p2</in_stream_name>
-        <out_stream_name>script_p3</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string>&#x7b;password&#x7d;</replace_string>
-        <replace_by_string>&#x24;&#x7b;password&#x7d;</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>800</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Replace target</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>dummy</in_stream_name>
-        <out_stream_name>script_p1</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string>&#x7b;target_machine&#x7d;</replace_string>
-        <replace_by_string>&#x24;&#x7b;target_machine&#x7d;</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>320</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Replace target folder</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>script_p3</in_stream_name>
-        <out_stream_name>script</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string>&#x7b;folder&#x7d;</replace_string>
-        <replace_by_string>&#x24;&#x7b;folder&#x7d;</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1040</xloc>
-      <yloc>240</yloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Replace username</name>
-    <type>ReplaceString</type>
+    <name>Get Variables</name>
+    <type>GetVariable</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -442,28 +309,41 @@
            </partitioning>
     <fields>
       <field>
-        <in_stream_name>script_p1</in_stream_name>
-        <out_stream_name>script_p2</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string>&#x7b;username&#x7d;</replace_string>
-        <replace_by_string>&#x24;&#x7b;username&#x7d;</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
+        <name>file_input</name>
+        <variable>&#x24;&#x7b;file_input&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>file_output</name>
+        <variable>&#x2f;Users&#x2f;giang.dinh&#x2f;Downloads&#x2f;files_utf8.txt</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>560</xloc>
-      <yloc>240</yloc>
+      <xloc>240</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Split field to rows</name>
-    <type>SplitFieldToRows3</type>
+    <name>Modified Java Script Value</name>
+    <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -472,17 +352,92 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-   <splitfield>output</splitfield>
-   <delimiter>&#x24;&#x5b;0D,0A&#x5d;</delimiter>
-   <newfield>file</newfield>
-   <rownum>N</rownum>
-   <rownum_field/>
-   <resetrownumber>Y</resetrownumber>
-   <delimiter_is_regex>Y</delimiter_is_regex>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xa;var file &#x3d; field&#x3b;&#xa;var isEmpty &#x3d; false&#x3b;&#xa;if &#x28;file&#x29; &#x7b;&#xa;    file &#x3d; file.replace&#x28;&#x2f;&#x5c;0&#x2f;g, &#x27;&#x27;&#x29;.trim&#x28;&#x29;&#x3b;&#xa;    isEmpty &#x3d; file.length &#x3c; 4 &#x3f; true &#x3a; file.charCodeAt&#x28;0&#x29; &#x3d;&#x3d; 0&#x3b;&#xa;&#x7d; else &#x7b;&#xa;    isEmpty &#x3d; true&#x3b;&#xa;&#x7d;&#xa;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>isEmpty</name>
+        <rename>isEmpty</rename>
+        <type>Boolean</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>file</name>
+        <rename>file</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>624</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>PASS</name>
+    <type>WriteToLog</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <loglevel>log_level_basic</loglevel>
+      <displayHeader>Y</displayHeader>
+      <limitRows>N</limitRows>
+      <limitRowsNumber>0</limitRowsNumber>
+      <logmessage/>
+    <fields>
+      </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>600</xloc>
-      <yloc>100</yloc>
+      <xloc>864</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>field</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>field</name>
+        <rename>field</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding>UTF-8</encoding>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>480</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -536,121 +491,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1152</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Write to log</name>
-    <type>WriteToLog</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <loglevel>log_level_basic</loglevel>
-      <displayHeader>Y</displayHeader>
-      <limitRows>N</limitRows>
-      <limitRowsNumber>0</limitRowsNumber>
-      <logmessage/>
-    <fields>
-      <field>
-        <name>script</name>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1240</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Write to log 2</name>
-    <type>WriteToLog</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <loglevel>log_level_basic</loglevel>
-      <displayHeader>Y</displayHeader>
-      <limitRows>N</limitRows>
-      <limitRowsNumber>0</limitRowsNumber>
-      <logmessage>&#x24;&#x7b;file_input&#x7d;</logmessage>
-    <fields>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>592</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Change file encoding</name>
-    <type>ChangeFileEncoding</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <filenamefield>file_input</filenamefield>
-    <targetfilenamefield>file_input</targetfilenamefield>
-    <sourceencoding>UTF-16</sourceencoding>
-    <targetencoding>UTF-8</targetencoding>
-    <addsourceresultfilenames>N</addsourceresultfilenames>
-    <addtargetresultfilenames>N</addtargetresultfilenames>
-    <createparentfolder>N</createparentfolder>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>432</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Get Variables</name>
-    <type>GetVariable</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>file_input</name>
-        <variable>&#x24;&#x7b;file_input&#x7d;</variable>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>632</xloc>
-      <yloc>304</yloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
