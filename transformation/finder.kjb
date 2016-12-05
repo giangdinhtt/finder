@@ -55,42 +55,6 @@
    <shared_objects_file/>
   <entries>
     <entry>
-      <name>Shell</name>
-      <description/>
-      <type>SHELL</type>
-      <filename/>
-      <work_directory/>
-      <arg_from_previous>N</arg_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <set_append_logfile>N</set_append_logfile>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <insertScript>Y</insertScript>
-      <script>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U finder&#x25;12345678&#x40;X &#x2f;&#x2f;192.168.1.11 &#x22;cmd &#x2f;U &#x2f;C dir C&#x3a;&#x5c;Users&#x5c;finder&#x5c;Documents &#x2f;s &#x2f;b &#x2f;a-d &#x2f;o&#x3a;gn&#x22;</script>
-      <loglevel>Basic</loglevel>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>200</xloc>
-      <yloc>100</yloc>
-      </entry>
-    <entry>
-      <name>Write To Log</name>
-      <description/>
-      <type>WRITE_TO_LOG</type>
-      <logmessage/>
-      <loglevel/>
-      <logsubject/>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>400</xloc>
-      <yloc>100</yloc>
-      </entry>
-    <entry>
       <name>START</name>
       <description/>
       <type>SPECIAL</type>
@@ -107,14 +71,126 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>48</xloc>
-      <yloc>96</yloc>
+      <xloc>200</xloc>
+      <yloc>100</yloc>
+      </entry>
+    <entry>
+      <name>Set variables</name>
+      <description/>
+      <type>SET_VARIABLES</type>
+      <replacevars>Y</replacevars>
+      <filename/>
+      <file_variable_type>JVM</file_variable_type>
+      <fields>
+        <field>
+          <variable_name>folder</variable_name>
+          <variable_value>&#x24;&#x7b;folder&#x7d;</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>target_machine</variable_name>
+          <variable_value>&#x24;&#x7b;target_machine&#x7d;</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>username</variable_name>
+          <variable_value>&#x24;&#x7b;username&#x7d;</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>password</variable_name>
+          <variable_value>&#x24;&#x7b;password&#x7d;</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>400</xloc>
+      <yloc>100</yloc>
+      </entry>
+    <entry>
+      <name>Shell</name>
+      <description/>
+      <type>SHELL</type>
+      <filename/>
+      <work_directory/>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <set_append_logfile>N</set_append_logfile>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <insertScript>Y</insertScript>
+      <script>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;U &#x2f;C dir &#x24;&#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d &#x2f;o&#x3a;gn&#x22;</script>
+      <loglevel>Basic</loglevel>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>600</xloc>
+      <yloc>100</yloc>
+      </entry>
+    <entry>
+      <name>Transformation</name>
+      <description/>
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;finder.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>Y</params_from_previous>
+      <exec_per_row>Y</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+            <parameter>            <name>folder</name>
+            <stream_name/>
+            <value/>
+            </parameter>            <parameter>            <name>password</name>
+            <stream_name/>
+            <value/>
+            </parameter>            <parameter>            <name>target_machine</name>
+            <stream_name/>
+            <value/>
+            </parameter>            <parameter>            <name>username</name>
+            <stream_name/>
+            <value/>
+            </parameter>      </parameters>      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>800</xloc>
+      <yloc>100</yloc>
       </entry>
   </entries>
   <hops>
     <hop>
-      <from>Shell</from>
-      <to>Write To Log</to>
+      <from>START</from>
+      <to>Set variables</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Set variables</from>
+      <to>Shell</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -122,13 +198,13 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>START</from>
-      <to>Shell</to>
+      <from>Shell</from>
+      <to>Transformation</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
+      <unconditional>N</unconditional>
     </hop>
   </hops>
   <notepads>
