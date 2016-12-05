@@ -104,7 +104,7 @@
         </field>
         <field>
           <variable_name>file_ouput</variable_name>
-          <variable_value>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;files.txt</variable_value>
+          <variable_value>&#x2f;tmp&#x2f;files.txt</variable_value>
           <variable_type>JVM</variable_type>
         </field>
       </fields>
@@ -129,7 +129,7 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <insertScript>Y</insertScript>
-      <script>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;U &#x2f;C dir &#x24;&#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d &#x2f;o&#x3a;gn&#x22;</script>
+      <script>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;U &#x2f;C dir &#x24;&#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d &#x2f;o&#x3a;gn&#x22; &#x3e; &#x24;&#x7b;file_output&#x7d;</script>
       <loglevel>Basic</loglevel>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -185,19 +185,6 @@
       <xloc>800</xloc>
       <yloc>100</yloc>
       </entry>
-    <entry>
-      <name>Write To Log</name>
-      <description/>
-      <type>WRITE_TO_LOG</type>
-      <logmessage/>
-      <loglevel/>
-      <logsubject/>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>400</xloc>
-      <yloc>240</yloc>
-      </entry>
   </entries>
   <hops>
     <hop>
@@ -221,15 +208,6 @@
     <hop>
       <from>Shell</from>
       <to>Transformation</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Set variables</from>
-      <to>Write To Log</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
