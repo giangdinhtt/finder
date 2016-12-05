@@ -183,7 +183,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>&#x2f;Users&#x2f;giang.dinh&#x2f;Downloads&#x2f;files.txt</filename>
+    <filename>&#x2f;tmp&#x2f;files.txt</filename>
     <filename_field>file_input</filename_field>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -195,7 +195,7 @@
     <add_filename_result>N</add_filename_result>
     <parallel>N</parallel>
     <newline_possible>Y</newline_possible>
-    <encoding>UTF-16</encoding>
+    <encoding>UTF-8</encoding>
     <fields>
       <field>
         <name>field</name>

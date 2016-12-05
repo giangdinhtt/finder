@@ -129,7 +129,7 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <insertScript>Y</insertScript>
-      <script>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;U &#x2f;C dir &#x24;&#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d &#x2f;o&#x3a;gn &#x3e;&#x3e; &#x24;&#x7b;folder&#x7d;&#x5c;temp_files.txt &#x26; more &#x24;&#x7b;folder&#x7d;&#x5c;temp_files.txt&#x22; &#x3e; &#x24;&#x7b;file_ouput&#x7d;&#xa;&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;C del &#x24;&#x7b;folder&#x7d;&#x5c;temp_files.txt&#x22;</script>
+      <script>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;U &#x2f;C dir &#x24;&#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d &#x2f;o&#x3a;gn &#x3e;&#x3e; &#x24;&#x7b;folder&#x7d;&#x5c;temp_files.txt &#x26; more &#x24;&#x7b;folder&#x7d;&#x5c;temp_files.txt&#x22; &#x3e; &#x24;&#x7b;file_ouput&#x7d; &#x26;&#x26; &#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;C del &#x24;&#x7b;folder&#x7d;&#x5c;temp_files.txt&#x22;</script>
       <loglevel>Basic</loglevel>
       <parallel>N</parallel>
       <draw>Y</draw>
