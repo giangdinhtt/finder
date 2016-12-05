@@ -139,7 +139,7 @@
   <hop> <from>Add constants</from><to>Get System Info</to><enabled>Y</enabled> </hop>
   <hop> <from>Get System Info</from><to>Table output</to><enabled>Y</enabled> </hop>
   <hop> <from>CSV file input</from><to>Add constants</to><enabled>Y</enabled> </hop>
-  <hop> <from>Write to log 2</from><to>CSV file input</to><enabled>Y</enabled> </hop>
+  <hop> <from>Write to log 2</from><to>CSV file input</to><enabled>N</enabled> </hop>
   </order>
   <step>
     <name>Add constants</name>
@@ -185,8 +185,8 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>&#x24;&#x7b;file_input&#x7d;</filename>
-    <filename_field/>
+    <filename>&#x2f;tmp&#x2f;files.txt</filename>
+    <filename_field>&#x2f;tmp&#x2f;files.txt</filename_field>
     <rownum_field/>
     <include_filename>N</include_filename>
     <separator>&#x24;&#x7b;line.separator&#x7d;</separator>
