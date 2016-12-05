@@ -11,7 +11,7 @@
     <parameters>
         <parameter>
             <name>file_input</name>
-            <default_value>&#x2f;Users&#x2f;giang.dinh&#x2f;Downloads&#x2f;files.txt</default_value>
+            <default_value>&#x2f;tmp&#x2f;files.txt</default_value>
             <description/>
         </parameter>
         <parameter>
@@ -131,12 +131,13 @@
   <hop> <from>Add constants</from><to>Get System Info</to><enabled>Y</enabled> </hop>
   <hop> <from>Get System Info</from><to>Table output</to><enabled>Y</enabled> </hop>
   <hop> <from>CSV file input</from><to>Select values</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter rows</from><to>PASS</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows</from><to>PASS</to><enabled>N</enabled> </hop>
   <hop> <from>Filter rows</from><to>FAILED</to><enabled>Y</enabled> </hop>
   <hop> <from>Select values</from><to>Modified Java Script Value</to><enabled>Y</enabled> </hop>
   <hop> <from>Modified Java Script Value</from><to>Filter rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter rows</from><to>Add constants</to><enabled>Y</enabled> </hop>
   <hop> <from>Get Variables</from><to>CSV file input</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get Variables</from><to>Write to log</to><enabled>N</enabled> </hop>
   </order>
   <step>
     <name>Add constants</name>
@@ -322,7 +323,7 @@
       </field>
       <field>
         <name>file_output</name>
-        <variable>&#x2f;Users&#x2f;giang.dinh&#x2f;Downloads&#x2f;files_utf8.txt</variable>
+        <variable>&#x24;&#x7b;file_output&#x7d;</variable>
         <type>String</type>
         <format/>
         <currency/>
@@ -492,6 +493,32 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1152</xloc>
       <yloc>192</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Write to log</name>
+    <type>WriteToLog</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <loglevel>log_level_basic</loglevel>
+      <displayHeader>Y</displayHeader>
+      <limitRows>N</limitRows>
+      <limitRowsNumber>0</limitRowsNumber>
+      <logmessage/>
+    <fields>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>368</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
