@@ -15,23 +15,8 @@
             <description/>
         </parameter>
         <parameter>
-            <name>folder</name>
-            <default_value>C&#x3a;&#x5c;&#x5c;Users&#x5c;&#x5c;finder&#x5c;&#x5c;Documents</default_value>
-            <description/>
-        </parameter>
-        <parameter>
-            <name>password</name>
-            <default_value>12345678&#x40;X</default_value>
-            <description/>
-        </parameter>
-        <parameter>
-            <name>target_machine</name>
-            <default_value>192.168.1.11</default_value>
-            <description/>
-        </parameter>
-        <parameter>
-            <name>username</name>
-            <default_value>finder</default_value>
+            <name>source_id</name>
+            <default_value>1</default_value>
             <description/>
         </parameter>
     </parameters>

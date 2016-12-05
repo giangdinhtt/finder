@@ -115,7 +115,7 @@
       <yloc>100</yloc>
       </entry>
     <entry>
-      <name>Shell</name>
+      <name>List files</name>
       <description/>
       <type>SHELL</type>
       <filename/>
@@ -129,7 +129,7 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <insertScript>Y</insertScript>
-      <script>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;U &#x2f;C dir &#x24;&#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d &#x2f;o&#x3a;gn &#x3e;&#x3e; &#x24;&#x7b;folder&#x7d;&#x5c;temp_files.txt &#x26; more &#x24;&#x7b;folder&#x7d;&#x5c;temp_files.txt&#x22; &#x3e; &#x24;&#x7b;file_ouput&#x7d; &#x26;&#x26; &#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;C del &#x24;&#x7b;folder&#x7d;&#x5c;temp_files.txt&#x22;</script>
+      <script>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;U &#x2f;C chcp 65001 &#x3e; nul &#x26; dir &#x24;&#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d-h-s &#x2f;o&#x3a;gn &#x3e; &#x25;temp&#x25;&#x5c;temp_files.txt &#x26; more &#x25;temp&#x25;&#x5c;temp_files.txt&#x22; &#x3e; &#x24;&#x7b;file_ouput&#x7d;</script>
       <loglevel>Basic</loglevel>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -165,25 +165,39 @@
       <logging_remote_work>N</logging_remote_work>
       <parameters>        <pass_all_parameters>Y</pass_all_parameters>
             <parameter>            <name>file_input</name>
-            <stream_name>file_output</stream_name>
-            <value/>
-            </parameter>            <parameter>            <name>folder</name>
-            <stream_name>folder</stream_name>
-            <value/>
-            </parameter>            <parameter>            <name>password</name>
             <stream_name/>
-            <value/>
-            </parameter>            <parameter>            <name>target_machine</name>
-            <stream_name/>
-            <value/>
-            </parameter>            <parameter>            <name>username</name>
+            <value>&#x24;&#x7b;file_output&#x7d;</value>
+            </parameter>            <parameter>            <name>source_id</name>
             <stream_name/>
             <value/>
             </parameter>      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>800</xloc>
-      <yloc>100</yloc>
+      <xloc>912</xloc>
+      <yloc>96</yloc>
+      </entry>
+    <entry>
+      <name>Delete temp</name>
+      <description/>
+      <type>SHELL</type>
+      <filename/>
+      <work_directory>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;</work_directory>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <set_append_logfile>N</set_append_logfile>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <insertScript>Y</insertScript>
+      <script>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;C del &#x25;temp&#x25;&#x5c;temp_files.txt&#x22;</script>
+      <loglevel>Basic</loglevel>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>768</xloc>
+      <yloc>96</yloc>
       </entry>
   </entries>
   <hops>
@@ -198,7 +212,7 @@
     </hop>
     <hop>
       <from>Set variables</from>
-      <to>Shell</to>
+      <to>List files</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -206,7 +220,16 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Shell</from>
+      <from>List files</from>
+      <to>Delete temp</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Delete temp</from>
       <to>Transformation</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
