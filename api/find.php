@@ -18,27 +18,28 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT f.*, s.address FROM files f LEFT JOIN sources s ON f.source_id = s.id WHERE f.path LIKE '%".$query."%';";
+/* change character set to utf8 */
+if (!$conn->set_charset("utf8")) {
+    die("Error loading character set utf8: ". $conn->error);
+}
+
+$sql = "SELECT f.*, s.address FROM files f LEFT JOIN sources s ON f.source_id = s.id WHERE f.path COLLATE UTF8_GENERAL_CI LIKE '%".$query."%';";
 $result = $conn->query($sql);
 
 $data = array();
-//echo $result->num_rows;
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-    	//echo $row;
     	$data[] = array(
     		'id' => $row["id"],
     		'path' => $row["path"],
     		'source' => $row["address"],
     		'lastModifedTime' => $row["updated_at"]
     		);
-        //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
     }
 }
 
-//$data = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
-header('Content-Type: application/json');
+header('Content-Type: application/json;charset=utf8;');
 echo json_encode($data);
 
 $conn->close();
