@@ -85,27 +85,32 @@
         <field>
           <variable_name>folder</variable_name>
           <variable_value>&#x24;&#x7b;folder&#x7d;</variable_value>
-          <variable_type>JVM</variable_type>
+          <variable_type>CURRENT_JOB</variable_type>
         </field>
         <field>
           <variable_name>target_machine</variable_name>
           <variable_value>&#x24;&#x7b;target_machine&#x7d;</variable_value>
-          <variable_type>JVM</variable_type>
+          <variable_type>CURRENT_JOB</variable_type>
         </field>
         <field>
           <variable_name>username</variable_name>
           <variable_value>&#x24;&#x7b;username&#x7d;</variable_value>
-          <variable_type>JVM</variable_type>
+          <variable_type>CURRENT_JOB</variable_type>
         </field>
         <field>
           <variable_name>password</variable_name>
           <variable_value>&#x24;&#x7b;password&#x7d;</variable_value>
-          <variable_type>JVM</variable_type>
+          <variable_type>CURRENT_JOB</variable_type>
         </field>
         <field>
-          <variable_name>file_ouput</variable_name>
+          <variable_name>file_input</variable_name>
           <variable_value>&#x2f;tmp&#x2f;files.txt</variable_value>
-          <variable_type>JVM</variable_type>
+          <variable_type>CURRENT_JOB</variable_type>
+        </field>
+        <field>
+          <variable_name>source_id</variable_name>
+          <variable_value>1</variable_value>
+          <variable_type>CURRENT_JOB</variable_type>
         </field>
       </fields>
       <parallel>N</parallel>
@@ -129,7 +134,7 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <insertScript>Y</insertScript>
-      <script>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;U &#x2f;C chcp 65001 &#x3e; nul &#x26; dir &#x24;&#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d-h-s &#x2f;o&#x3a;gn &#x3e; &#x25;temp&#x25;&#x5c;temp_files.txt &#x26; more &#x25;temp&#x25;&#x5c;temp_files.txt&#x22; &#x3e; &#x24;&#x7b;file_ouput&#x7d;</script>
+      <script>&#x2f;home&#x2f;pi&#x2f;Downloads&#x2f;winexe-winexe-waf&#x2f;source&#x2f;build&#x2f;winexe -U &#x24;&#x7b;username&#x7d;&#x25;&#x24;&#x7b;password&#x7d; &#x2f;&#x2f;&#x24;&#x7b;target_machine&#x7d; &#x22;cmd &#x2f;U &#x2f;C chcp 65001 &#x3e; nul &#x26; dir &#x24;&#x7b;folder&#x7d; &#x2f;s &#x2f;b &#x2f;a-d-h-s &#x2f;o&#x3a;gn &#x3e; &#x25;temp&#x25;&#x5c;temp_files.txt &#x26; more &#x25;temp&#x25;&#x5c;temp_files.txt&#x22; &#x3e; &#x24;&#x7b;file_input&#x7d;</script>
       <loglevel>Basic</loglevel>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -150,7 +155,7 @@
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
-      <set_logfile>Y</set_logfile>
+      <set_logfile>N</set_logfile>
       <logfile>&#x2f;tmp&#x2f;log.txt</logfile>
       <logext/>
       <add_date>N</add_date>
@@ -166,10 +171,10 @@
       <parameters>        <pass_all_parameters>Y</pass_all_parameters>
             <parameter>            <name>file_input</name>
             <stream_name/>
-            <value>&#x24;&#x7b;file_output&#x7d;</value>
+            <value>&#x24;&#x7b;file_input&#x7d;</value>
             </parameter>            <parameter>            <name>source_id</name>
             <stream_name/>
-            <value/>
+            <value>&#x24;&#x7b;source_id&#x7d;</value>
             </parameter>      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
