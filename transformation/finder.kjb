@@ -12,6 +12,11 @@
   <modified_date>2016&#x2f;12&#x2f;05 02&#x3a;49&#x3a;37.136</modified_date>
     <parameters>
         <parameter>
+            <name>file_output</name>
+            <default_value>&#x2f;tmp&#x2f;files.txt</default_value>
+            <description/>
+        </parameter>
+        <parameter>
             <name>folder</name>
             <default_value>C&#x3a;&#x5c;Users&#x5c;finder&#x5c;Documents</default_value>
             <description/>
@@ -71,8 +76,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>200</xloc>
-      <yloc>100</yloc>
+      <xloc>224</xloc>
+      <yloc>96</yloc>
       </entry>
     <entry>
       <name>Set variables</name>
@@ -104,7 +109,7 @@
         </field>
         <field>
           <variable_name>file_ouput</variable_name>
-          <variable_value>&#x2f;tmp&#x2f;files.txt</variable_value>
+          <variable_value>&#x24;&#x7b;file_output&#x7d;</variable_value>
           <variable_type>JVM</variable_type>
         </field>
       </fields>
@@ -112,7 +117,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>400</xloc>
-      <yloc>100</yloc>
+      <yloc>96</yloc>
       </entry>
     <entry>
       <name>List files</name>
