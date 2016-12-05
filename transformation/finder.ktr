@@ -139,7 +139,7 @@
   <hop> <from>Add constants</from><to>Get System Info</to><enabled>Y</enabled> </hop>
   <hop> <from>Get System Info</from><to>Table output</to><enabled>Y</enabled> </hop>
   <hop> <from>CSV file input</from><to>Add constants</to><enabled>Y</enabled> </hop>
-  <hop> <from>Write to log 2</from><to>CSV file input</to><enabled>N</enabled> </hop>
+  <hop> <from>CSV file input</from><to>Write to log 2</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add constants</name>
