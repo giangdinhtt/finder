@@ -117,6 +117,20 @@
 																	<i class="ace-icon fa fa-search nav-search-icon"></i>
 																	<input type="text" class="search-query" placeholder="Search files..." size="75">
 																</span>
+																<span>
+																	<select class="file-ext">
+																		<option value=""></option>
+																		<option value=".doc">.doc</option>
+																		<option value=".docx">.docx</option>
+																		<option value=".xls">.xls</option>
+																		<option value=".xlsx">.xlsx</option>
+																		<option value=".txt">.txt</option>
+																		<option value=".sql">.sql</option>
+																		<option value=".mdb">.mdb</option>
+																		<option value=".dwf">.dwf</option>
+																		<option value=".dwg">.dwg</option>
+																	</select>
+																</span>
 																<button id="searchBtn" class="btn btn-sm" type="button">Search</button>
 															</form>
 														</div>
@@ -261,13 +275,14 @@
 				$('.message-list .message-item input[type=checkbox]').removeAttr('checked');
 				$(document).on('click', '#searchBtn' , function() {
 					var query = $('input.search-query').val();
+					var ext = $('select.file-ext').val();
 					var message = $('.message-list');
 					$('.message-container').append('<div class="message-loading-overlay"><i class="fa-spin ace-icon fa fa-spinner orange2 bigger-160"></i></div>');
 					message.empty();
 					$.ajax({
 						url: window.location.origin + '/finder/api/find.php',
 						type: 'post',
-						data: {q:query}
+						data: {q: query, ext: ext}
 					}).done(function (response, textStatus, jqXHR){
 				        // Log a message to the console
 				        console.log(response);
