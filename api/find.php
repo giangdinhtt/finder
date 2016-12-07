@@ -1,7 +1,7 @@
 <?php
 
 $query = isset($_POST['q']) ? $_POST['q'] : null;
-$query = isset($_POST['ext']) ? $_POST['ext'] : null;
+$ext = isset($_POST['ext']) ? $_POST['ext'] : null;
 //if ($query == null) {
 //	die("Missing parameter: q");
 //}
@@ -23,6 +23,8 @@ if ($conn->connect_error) {
 if (!$conn->set_charset("utf8")) {
     die("Error loading character set utf8: ". $conn->error);
 }
+
+$sql = "SELECT f.*, s.address FROM files f LEFT JOIN sources s ON f.source_id = s.id WHERE f.path COLLATE UTF8_GENERAL_CI LIKE '%".$query."%' AND f.path LIKE '%".$ext."';";
 
 $sql = "SELECT f.*, s.address FROM files f LEFT JOIN sources s ON f.source_id = s.id WHERE f.path COLLATE UTF8_GENERAL_CI LIKE '%".$query."%' AND f.path LIKE '%".$ext."';";
 $result = $conn->query($sql);
