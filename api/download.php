@@ -39,13 +39,18 @@ if ($result->num_rows > 0) {
 }
 
 // Copy file from remote host via FTP
+// Make dir if not exist
+$dir = "/tmp/" . $file_id;
+if (!file_exists($dir)) {
+    mkdir($dir, 0777, true);
+}
 $script = "/home/pi/Downloads/winexe-winexe-waf/source/build/winexe -U ";
 $script .= $host_user . "%" . $host_password . " //" . $host;
 $script .= " \"cmd /C ";
 $script .= "echo pi>ftp_pi.txt";
 $script .= "&echo raspberry>>ftp_pi.txt";
 $script .= "&echo bin>>ftp_pi.txt";
-$script .= "&echo cd /tmp>>ftp_pi.txt";
+$script .= "&echo cd " . $dir . ">>ftp_pi.txt";
 $script .= "&echo put " . $remote_path . ">>ftp_pi.txt";
 $script .= "&echo bye>>ftp_pi.txt";
 $script .= "& ftp -s:ftp_pi.txt 192.168.1.3\"";
@@ -55,8 +60,8 @@ $output = shell_exec($script);
 //echo $output;
 
 // Send file to browser
-$file = "/tmp/" . $file_id;
-
+$file = $dir . "/" . basename($remote_path);
+//echo $file;
 if (file_exists($file)) {
   header('Content-Description: File Transfer');
   header('Content-Type: application/octet-stream');
