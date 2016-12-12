@@ -41,7 +41,17 @@ if ($result->num_rows > 0) {
 $result = $conn->query("SELECT * FROM files f WHERE f.id = " . $file_id . ";");
 
 // Copy file from remote host via FTP
-$script = "/home/pi/Downloads/winexe-winexe-waf/source/build/winexe -U " . $host_user . "%" . $host_password . " //" . $host . " \"cmd /C cd %temp% &echo pi>%temp%\ftp1.txt&echo raspberry>>%temp%\ftp1.txt&echo bin>>%temp%\ftp1.txt&echo cd /tmp>>%temp%\ftp1.txt&echo put \"" . $path . "\">>%temp%\ftp1.txt&echo bye>>%temp%\ftp1.txt& ftp -s:%temp%\ftp1.txt 192.168.1.3\"";
+$script = "/home/pi/Downloads/winexe-winexe-waf/source/build/winexe -U ";
+$script .= $host_user . "%" . $host_password . " //" . $host;
+$script .= " \"cmd /C cd %temp% "
+$script .= "&echo pi>%temp%\\ftp1.txt"
+$script .= "&echo raspberry>>%temp%\\ftp1.txt"
+$script .= "&echo bin>>%temp%\\ftp1.txt"
+$script .= "&echo cd /tmp>>%temp%\\ftp1.txt"
+$script .= "&echo put \"" . $remote_path . "\">>%temp%\\ftp1.txt"
+$script .= "&echo bye>>%temp%\\ftp1.txt"
+$script .= "& ftp -s:%temp%\\ftp1.txt 192.168.1.3\"";
+
 echo $script;
 $output = shell_exec($script);
 echo $output;
