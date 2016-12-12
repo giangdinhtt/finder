@@ -1,6 +1,6 @@
 <?php
 
-$file_id = isset($_POST['f']) ? $_POST['f'] : null;
+$file_id = isset($_GET['f']) ? $_GET['f'] : null;
 if ($file_id == null) {
 	die("Missing parameter: f");
 }
@@ -41,8 +41,10 @@ if ($result->num_rows > 0) {
 $result = $conn->query("SELECT * FROM files f WHERE f.id = " . $file_id . ";");
 
 // Copy file from remote host via FTP
-$script = "/home/pi/Downloads/winexe-winexe-waf/source/build/winexe -U " . $host_user . "%" . $host_password . " //" . $host . " \"cmd /C cd C:\Users\giang.dinh\Downloads &echo pi>%temp%\ftp1.txt&echo raspberry>>%temp%\ftp1.txt&echo bin>>%temp%\ftp1.txt&echo cd /tmp>>%temp%\ftp1.txt&echo put \"" . $path . "\">>%temp%\ftp1.txt&echo bye>>%temp%\ftp1.txt& ftp -s:%temp%\ftp1.txt 192.168.1.3\"";
+$script = "/home/pi/Downloads/winexe-winexe-waf/source/build/winexe -U " . $host_user . "%" . $host_password . " //" . $host . " \"cmd /C cd %temp% &echo pi>%temp%\ftp1.txt&echo raspberry>>%temp%\ftp1.txt&echo bin>>%temp%\ftp1.txt&echo cd /tmp>>%temp%\ftp1.txt&echo put \"" . $path . "\">>%temp%\ftp1.txt&echo bye>>%temp%\ftp1.txt& ftp -s:%temp%\ftp1.txt 192.168.1.3\"";
+echo $script;
 $output = shell_exec($script);
+echo $output;
 
 // Send file to browser
 $file = "/tmp/" . $file_id;
