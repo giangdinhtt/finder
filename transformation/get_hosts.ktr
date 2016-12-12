@@ -117,7 +117,7 @@
            <schema_name/>
            </partitioning>
     <connection>Finder</connection>
-    <sql>SELECT f.path, s.id as source_id, address, port, os_type, username, password&#xd;&#xa;FROM folders f &#xd;&#xa;	INNER JOIN sources s&#xd;&#xa;	ON s.id &#x3d; f.source_id</sql>
+    <sql>SELECT f.path, s.id as source_id, address, port, os_type, username, password&#xd;&#xa;FROM folders f &#xd;&#xa;	INNER JOIN sources s&#xd;&#xa;	ON s.id &#x3d; f.source_id&#xd;&#xa;WHERE s.is_active &#x3d; true</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
