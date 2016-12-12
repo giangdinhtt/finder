@@ -15,6 +15,16 @@
             <description/>
         </parameter>
         <parameter>
+            <name>folder</name>
+            <default_value/>
+            <description/>
+        </parameter>
+        <parameter>
+            <name>host</name>
+            <default_value/>
+            <description/>
+        </parameter>
+        <parameter>
             <name>source_id</name>
             <default_value/>
             <description/>
@@ -269,6 +279,42 @@
       <field>
         <name>file_input</name>
         <variable>&#x24;&#x7b;file_input&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>host</name>
+        <variable>&#x24;&#x7b;host&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>source_id</name>
+        <variable>&#x24;&#x7b;source_id&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>folder</name>
+        <variable>&#x24;&#x7b;folder&#x7d;</variable>
         <type>String</type>
         <format/>
         <currency/>

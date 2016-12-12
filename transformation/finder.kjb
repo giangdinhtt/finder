@@ -193,6 +193,9 @@
             </parameter>            <parameter>            <name>folder</name>
             <stream_name>folder</stream_name>
             <value/>
+            </parameter>            <parameter>            <name>host</name>
+            <stream_name/>
+            <value>&#x24;&#x7b;host&#x7d;</value>
             </parameter>      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
