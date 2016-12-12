@@ -40,11 +40,11 @@ if ($result->num_rows > 0) {
 
 // Copy file from remote host via FTP
 // Make dir if not exist
-$dir = "/tmp/" . $file_id;
+$dir = "/tmp";// . $file_id;
 //if (!file_exists($dir)) {
 //    mkdir($dir, 0777, true);
 //}
-shell_exec("mkdir -p " . $dir);
+//shell_exec("mkdir -p " . $dir);
 
 $script = "/home/pi/Downloads/winexe-winexe-waf/source/build/winexe -U ";
 $script .= $host_user . "%" . $host_password . " //" . $host;
@@ -68,7 +68,7 @@ $file = $dir . "/" . $file_name;
 if (file_exists($file)) {
   header('Content-Description: File Transfer');
   header('Content-Type: application/octet-stream');
-  header('Content-Disposition: attachment; filename='.basename($file_id));
+  header('Content-Disposition: attachment; filename='.basename($file_name));
   header('Content-Transfer-Encoding: binary');
   header('Expires: 0');
   header('Cache-Control: must-revalidate');
