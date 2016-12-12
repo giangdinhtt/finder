@@ -26,17 +26,24 @@ if (!$conn->set_charset("utf8")) {
 $sql = "SELECT * FROM files f WHERE f.id = " . $file_id . ";";
 $result = $conn->query($sql);
 
-$data = array();
 if ($result->num_rows > 0) {
     // output data of each row
     $row = $result->fetch_assoc();
   	$remote_path = $row["path"];
+    $result = $conn->query("SELECT * FROM sources WHERE id = " . $row["source_id"] . ";");
+
+    $row = $result->fetch_assoc();
+    $host = $row["address"];
+    $host_user = $row["username"];
+    $host_password = $row["password"];
 }
 
+$result = $conn->query("SELECT * FROM files f WHERE f.id = " . $file_id . ";");
+
 // Copy file from remote host via FTP
-$script = "/home/pi/Downloads/winexe-winexe-waf/source/build/winexe -U giang.dinh%gianQ@2001 //192.168.1.108 \"cmd /C cd C:\Users\giang.dinh\Downloads &echo pi>ftp1.txt&echo raspberry>>ftp1.txt&echo bin>>ftp1.txt&echo cd /tmp>>ftp1.txt&echo put files.txt>>ftp1.txt&echo bye>>ftp1.txt& ftp -s:ftp1.txt 192.168.1.3\"";
+$script = "/home/pi/Downloads/winexe-winexe-waf/source/build/winexe -U " . $host_user . "%" . $host_password . " //" . $host . " \"cmd /C cd C:\Users\giang.dinh\Downloads &echo pi>%temp%\ftp1.txt&echo raspberry>>%temp%\ftp1.txt&echo bin>>%temp%\ftp1.txt&echo cd /tmp>>%temp%\ftp1.txt&echo put \"" . $path . "\">>%temp%\ftp1.txt&echo bye>>%temp%\ftp1.txt& ftp -s:%temp%\ftp1.txt 192.168.1.3\"";
 $output = shell_exec($script);
-echo "<pre>$output</pre>";
+
 // Send file to browser
 $file = "/tmp/" . $file_id;
 
