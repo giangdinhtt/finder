@@ -60,7 +60,8 @@ $output = shell_exec($script);
 //echo $output;
 
 // Send file to browser
-$file = $dir . "/" . basename($remote_path);
+$file_name = preg_replace('/^.+\\\\/', '', $remote_path);
+$file = $dir . "/" . $file_name;
 //echo $file;
 if (file_exists($file)) {
   header('Content-Description: File Transfer');
