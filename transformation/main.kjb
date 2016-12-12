@@ -13,7 +13,7 @@
     <parameters>
         <parameter>
             <name>temp_file</name>
-            <default_value>&#x2f;temp&#x2f;files.txt</default_value>
+            <default_value>&#x2f;tmp&#x2f;files.txt</default_value>
             <description/>
         </parameter>
     </parameters>
