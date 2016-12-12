@@ -41,9 +41,11 @@ if ($result->num_rows > 0) {
 // Copy file from remote host via FTP
 // Make dir if not exist
 $dir = "/tmp/" . $file_id;
-if (!file_exists($dir)) {
-    mkdir($dir, 0777, true);
-}
+//if (!file_exists($dir)) {
+//    mkdir($dir, 0777, true);
+//}
+shell_exec("mkdir -p " . $dir);
+
 $script = "/home/pi/Downloads/winexe-winexe-waf/source/build/winexe -U ";
 $script .= $host_user . "%" . $host_password . " //" . $host;
 $script .= " \"cmd /C ";
