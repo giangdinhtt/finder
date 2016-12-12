@@ -140,7 +140,7 @@
 															<!-- #section:pages/inbox.message-list -->
 															<div class="message-list" id="message-list">
 																<!-- #section:pages/inbox.message-list.item -->
-																
+
 																<!-- /section:pages/inbox.message-list.item -->
 															</div>
 															<!-- /section:pages/inbox.message-list -->
@@ -152,7 +152,7 @@
 <!--
 															<div class="pull-right">
 																<div class="inline middle"> page 1 of 16 </div>
- 
+
 																&nbsp; &nbsp;
 																<ul class="pagination middle">
 																	<li class="disabled">
@@ -270,7 +270,7 @@
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			jQuery(function($){
-				
+
 				//basic initializations
 				$('.message-list .message-item input[type=checkbox]').removeAttr('checked');
 				$(document).on('click', '#searchBtn' , function() {
@@ -290,10 +290,11 @@
 				        setTimeout(function() {
 							for (var i = 0; i < response.length; i ++) {
 								var file = response[i];
+								var fileId = file['file_id'];
 								var path = file['path'];
 								var sourceSystem = file['source'];
 								var modifiedTime = file['lastModifedTime'];
-								var template = "<div class='message-item message-unread'><span class='sender' title='" + path + "'>" + sourceSystem + "</span><span class='time' style='width:130px;'>" + modifiedTime + "</span><span class='summary'><span class='text'>" + path + "</span></span></div>";
+								var template = "<div class='message-item message-unread'><span class='sender' title='" + path + "'>" + sourceSystem + "</span><span class='time' style='width:130px;'>" + modifiedTime + "</span><span class='summary'><span class='text'>" + path + "</span><span><a href='" + window.location.origin + "/finder/api/download.php?f=" + fileId + "' target='_blank'>Download</a></span></span></div>";
 								message.append(template);
 							}
 							$('.message-container').find('.message-loading-overlay').remove();
