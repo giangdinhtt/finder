@@ -23,7 +23,7 @@ if (!$conn->set_charset("utf8")) {
     die("Error loading character set utf8: ". $conn->error);
 }
 
-$sql = "SELECT * FROM files f WHERE f.id = " . $file_id . ";";
+$sql = "SELECT * FROM files WHERE id = " . $file_id . ";";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
     $host_password = $row["password"];
 }
 
-$result = $conn->query("SELECT * FROM files f WHERE f.id = " . $file_id . ";");
+//$result = $conn->query("SELECT * FROM files f WHERE f.id = " . $file_id . ";");
 
 // Copy file from remote host via FTP
 $script = "/home/pi/Downloads/winexe-winexe-waf/source/build/winexe -U ";
@@ -48,7 +48,7 @@ $script .= "&echo pi>%temp%\\ftp1.txt";
 $script .= "&echo raspberry>>%temp%\\ftp1.txt";
 $script .= "&echo bin>>%temp%\\ftp1.txt";
 $script .= "&echo cd /tmp>>%temp%\\ftp1.txt";
-$script .= "&echo put \"" . $remote_path . "\">>%temp%\\ftp1.txt";
+$script .= "&echo put \"" . str_replace('\\', '\\\\', $remote_path) . "\">>%temp%\\ftp1.txt";
 $script .= "&echo bye>>%temp%\\ftp1.txt";
 $script .= "& ftp -s:%temp%\\ftp1.txt 192.168.1.3\"";
 
